@@ -43,7 +43,7 @@ Good luck with your interview 😊
 |19 | [What is the reason to choose the name let as a keyword](#what-is-the-reason-to-choose-the-name-let-as-a-keyword)|
 |20 | [How do you redeclare variables in switch block without an error](#how-do-you-redeclare-variables-in-switch-block-without-an-error)|
 |21 | [What is the Temporal Dead Zone](#what-is-the-temporal-dead-zone)|
-|22 | [What is IIFE(Immediately Invoked Function Expression)](#what-is-iife(immediately-invoked-function-expression))|
+|22 | [What is IIFE(Immediately Invoked Function Expression)](#what-is-iifeimmediately-invoked-function-expression)|
 |23 | [What is the benefit of using modules](#what-is-the-benefit-of-using-modules)|
 |24 | [What is memoization](#what-is-memoization)|
 |25 | [What is Hoisting](#what-is-hoisting)|
@@ -99,7 +99,7 @@ Good luck with your interview 😊
 |75 | [What is eval](#What-is-eval)|
 |76 | [What is the difference between window and document](#what-is-the-difference-between-window-and-document)|
 |77 | [How do you access history in javascript](#how-do-you-access-history-in-javascript)|
-|78 | [What are the javascript data types](#what-are-the-javascript-data-types)|
+|78 | [How do you detect caps lock key turned on or not](#how-do-you-detect-caps-lock-key-turned-on-or-not)|
 |79 | [What is isNaN](#what-is-isnan)|
 |80 | [What are the differences between undeclared and undefined variables](#what-are-the-differences-between-undeclared-and-undefined-variables)|
 |81 | [What are global variables](#what-are-global-variables)|
@@ -548,7 +548,9 @@ Good luck with your interview 😊
 
 2. ### What is a prototype chain
 
-    **Prototype chaining** is used to build new types of objects based on existing ones. It is similar to inheritance in a class based language. The prototype on object instance is available through **Object.getPrototypeOf(object)** or __proto__ property whereas prototype on constructors function is available through object.prototype.
+    **Prototype chaining** is used to build new types of objects based on existing ones. It is similar to inheritance in a class based language. 
+    
+    The prototype on object instance is available through **Object.getPrototypeOf(object)** or **__proto__** property whereas prototype on constructors function is available through **Object.prototype**.
 
     ![Screenshot](images/prototype_chain.png)
 
@@ -572,7 +574,7 @@ Good luck with your interview 😊
     invite.call(employee2, 'Hello', 'How are you?'); // Hello Jimmy Baily, How are you?
     ```
 
-    **Apply:** Invokes the function and allows you to pass in arguments as an array
+    **Apply:** Invokes the function with a given `this` value and allows you to pass in arguments as an array
 
     ```javascript
     var employee1 = {firstName: 'John', lastName: 'Rodson'};
@@ -586,7 +588,7 @@ Good luck with your interview 😊
     invite.apply(employee2, ['Hello', 'How are you?']); // Hello Jimmy Baily, How are you?
     ```
 
-    **bind:** returns a new function, allowing you to pass in an array and any number of arguments
+    **bind:** returns a new function, allowing you to pass any number of arguments
 
     ```javascript
     var employee1 = {firstName: 'John', lastName: 'Rodson'};
@@ -602,20 +604,23 @@ Good luck with your interview 😊
     inviteEmployee2('Hello', 'How are you?'); // Hello Jimmy Baily, How are you?
     ```
 
-    Call and apply are pretty interchangeable. Both execute the current function immediately. You need to decide whether it’s easier to send in an array or a comma separated list of arguments. You can remember by treating Call is for comma (separated list) and Apply is for Array. Whereas Bind creates a new function that will have `this` set to the first parameter passed to bind().
+    Call and apply are pretty interchangeable. Both execute the current function immediately. You need to decide whether it’s easier to send in an array or a comma separated list of arguments. You can remember by treating Call is for **comma** (separated list) and Apply is for **Array**. 
+    
+    Whereas Bind creates a new function that will have `this` set to the first parameter passed to bind().
 
     **[⬆ Back to Top](#table-of-contents)**
 
 4. ### What is JSON and its common operations
 
     **JSON** is a text-based data format following JavaScript object syntax, which was popularized by `Douglas Crockford`. It is useful when you want to transmit data across a network and it is basically just a text file with an extension of .json, and a MIME type of application/json
+    
     **Parsing:** Converting a string to a native object
 
     ```javascript
     JSON.parse(text)
     ```
 
-    Stringification: **converting a native object to a string so it can be transmitted across the network
+    **Stringification:** converting a native object to a string so it can be transmitted across the network
 
     ```javascript
     JSON.stringify(object)
@@ -625,7 +630,9 @@ Good luck with your interview 😊
 
 5. ### What is the purpose of the array slice method
 
-    The **slice()** method returns the selected elements in an array as a new array object. It selects the elements starting at the given start argument, and ends at the given optional end argument without including the last element. If you omit the second argument then it selects till the end. Some of the examples of this method are,
+    The **slice()** method returns the selected elements in an array as a new array object. It selects the elements starting at the given start argument, and ends at the given optional end argument without including the last element. If you omit the second argument then it selects till the end.
+    
+    Some of the examples of this method are,
 
     ```javascript
     let arrayIntegers = [1, 2, 3, 4, 5];
@@ -640,7 +647,9 @@ Good luck with your interview 😊
 
 6. ### What is the purpose of the array splice method
 
-    The **splice()** method is used either adds/removes items to/from an array, and then returns the removed item. The first argument specifies the array position for insertion or deletion whereas the option second argument indicates the number of elements to be deleted. Each additional argument is added to the array. Some of the examples of this method are,
+    The **splice()** method is used either adds/removes items to/from an array, and then returns the removed item. The first argument specifies the array position for insertion or deletion whereas the option second argument indicates the number of elements to be deleted. Each additional argument is added to the array. 
+    
+    Some of the examples of this method are,
 
     ```javascript
     let arrayIntegersOriginal1 = [1, 2, 3, 4, 5];
@@ -742,19 +751,21 @@ Good luck with your interview 😊
 
 13. ### What is a higher order function
 
-    Higher-order function is a function that accepts another function as an argument or returns a function as a return value.
+    Higher-order function is a function that accepts another function as an argument or returns a function as a return value or both.
 
     ```javascript
-    const firstOrderFunc = () => console.log ('Hello I am a First order function');
-    const higherOrder = ReturnFirstOrderFunc => ReturnFirstOrderFunc ();
-    higherOrder (firstOrderFunc);
+    const firstOrderFunc = () => console.log ('Hello, I am a First order function');
+    const higherOrder = ReturnFirstOrderFunc => ReturnFirstOrderFunc();
+    higherOrder(firstOrderFunc);
     ```
 
     **[⬆ Back to Top](#table-of-contents)**
 
 14. ### What is a unary function
 
-    Unary function (i.e. monadic) is a function that accepts exactly one argument. Let us take an example of unary function. It stands for a single argument accepted by a function.
+    Unary function (i.e. monadic) is a function that accepts exactly one argument. It stands for a single argument accepted by a function.
+    
+    Let us take an example of unary function,
 
     ```javascript
     const unaryFunction = a => console.log (a + 10); // Add 10 to the given argument and display the value
@@ -764,47 +775,56 @@ Good luck with your interview 😊
 
 15. ### What is the currying function
 
-    Currying is the process of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Currying is named after a mathematician Haskell Curry. By applying currying, a n-ary function turns it into a unary function. Let's take an example of n-ary function and how it turns into a currying function
+    Currying is the process of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Currying is named after a mathematician **Haskell Curry**. By applying currying, a n-ary function turns it into a unary function. 
+    
+    Let's take an example of n-ary function and how it turns into a currying function,
 
     ```javascript
     const multiArgFunction = (a, b, c) => a + b + c;
+    console.log(multiArgFunction(1,2,3));// 6
+    
     const curryUnaryFunction = a => b => c => a + b + c;
     curryUnaryFunction (1); // returns a function: b => c =>  1 + b + c
     curryUnaryFunction (1) (2); // returns a function: c => 3 + c
     curryUnaryFunction (1) (2) (3); // returns the number 6
     ```
 
-    Curried functions are great to improve code reusability and functional composition.
+    Curried functions are great to improve **code reusability** and **functional composition**.
 
     **[⬆ Back to Top](#table-of-contents)**
 
 16. ### What is a pure function
 
-    A **Pure function** is a function where the return value is only determined by its arguments without any side effects. i.e, If you call a function with the same arguments 'n' number of times and 'n' number of places in the application then it will always return the same value. Let's take an example to see the difference between pure and impure functions,
+    A **Pure function** is a function where the return value is only determined by its arguments without any side effects. i.e, If you call a function with the same arguments 'n' number of times and 'n' number of places in the application then it will always return the same value.
+    
+    Let's take an example to see the difference between pure and impure functions,
 
     ```javascript
     //Impure
     let numberArray = [];
-    const impureAddNumber = number => numberArray.push (number);
+    const impureAddNumber = number => numberArray.push(number);
     //Pure
     const pureAddNumber = number => argNumberArray =>
-      argNumberArray.concat ([number]);
+      argNumberArray.concat([number]);
 
     //Display the results
-    console.log (impureAddNumber (6)); // returns 1
+    console.log (impureAddNumber(6)); // returns 1
     console.log (numberArray); // returns [6]
-    console.log (pureAddNumber (7) (numberArray)); // returns [6, 7]
+    console.log (pureAddNumber(7) (numberArray)); // returns [6, 7]
     console.log (numberArray); // returns [6]
     ```
 
-    As per above code snippets, Push function is impure itself by altering the array and returning an push number index which is independent of parameter value. Whereas Concat on the other hand takes the array and concatenates it with the other array producing a whole new array without side effects. Also, the return value is a concatenation of the previous array.
+    As per above code snippets, **Push** function is impure itself by altering the array and returning an push number index which is independent of parameter value. Whereas **Concat** on the other hand takes the array and concatenates it with the other array producing a whole new array without side effects. Also, the return value is a concatenation of the previous array.
+    
     Remember that Pure functions are important as they simplify unit testing without any side effects and no need for dependency injection. They also avoid tight coupling and make it harder to break your application by not having any side effects. These principles are coming together with **Immutability** concept of ES6 by giving preference to **const** over **let** usage.
 
     **[⬆ Back to Top](#table-of-contents)**
 
 17. ### What is the purpose of the let keyword
 
-    The `let` statement declares a **block scope local variable**. Hence the variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used. Whereas variables declared with the var keyword used to define a variable globally, or locally to an entire function regardless of block scope. Let's take an example to demonstrate the usage,
+    The `let` statement declares a **block scope local variable**. Hence the variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used. Whereas variables declared with the `var` keyword used to define a variable globally, or locally to an entire function regardless of block scope.
+    
+    Let's take an example to demonstrate the usage,
 
     ```javascript
     let counter = 30;
@@ -812,7 +832,7 @@ Good luck with your interview 😊
       let counter = 31;
       console.log(counter); // 31
     }
-    console.log(counter); // 30 (because if block variable won't exist here)
+    console.log(counter); // 30 (because the variable in if block won't exist here)
     ```
 
     **[⬆ Back to Top](#table-of-contents)**
@@ -832,21 +852,22 @@ Good luck with your interview 😊
     ```javascript
     function userDetails(username) {
        if(username) {
-         console.log(salary); // undefined(due to hoisting)
-         console.log(age); // error: age is not defined
+         console.log(salary); // undefined due to hoisting
+         console.log(age); // ReferenceError: Cannot access 'age' before initialization
          let age = 30;
          var salary = 10000;
        }
        console.log(salary); //10000 (accessible to due function scope)
        console.log(age); //error: age is not defined(due to block scope)
     }
+    userDetails('John');
     ```
 
     **[⬆ Back to Top](#table-of-contents)**
 
 19. ### What is the reason to choose the name let as a keyword
 
-    Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
+    `let` is a mathematical statement that was adopted by early programming languages like **Scheme** and **Basic**. It has been borrowed from dozens of other languages that use `let` already as a traditional keyword as close to `var` as possible.
 
     **[⬆ Back to Top](#table-of-contents)**
 
@@ -887,7 +908,9 @@ Good luck with your interview 😊
 
 21. ### What is the Temporal Dead Zone
 
-    The Temporal Dead Zone is a behavior in JavaScript that occurs when declaring a variable with the let and const keywords, but not with var. In ECMAScript 6, accessing a let or const variable before its declaration (within its scope) causes a ReferenceError. The time span when that happens, between the creation of a variable’s binding and its declaration, is called the temporal dead zone. Let's see this behavior with an example,
+    The Temporal Dead Zone is a behavior in JavaScript that occurs when declaring a variable with the let and const keywords, but not with var. In ECMAScript 6, accessing a `let` or `const` variable before its declaration (within its scope) causes a ReferenceError. The time span when that happens, between the creation of a variable’s binding and its declaration, is called the temporal dead zone.
+    
+    Let's see this behavior with an example,
 
     ```javascript
     function somemethod() {
@@ -1022,9 +1045,11 @@ Good luck with your interview 😊
 27. ### What are closures
 
     A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
+    
     1. Own scope where variables defined between its curly brackets
     2. Outer function’s variables
     3. Global variables
+    
     Let's take an example of closure concept,
 
     ```javascript
@@ -1039,7 +1064,7 @@ Good luck with your interview 😊
     myFunction('Hello Mr.'); //output: Hello Mr.John
     ```
 
-    As per the above code, the inner function(greetingInfo) has access to the variables in the outer function scope(Welcome) even after the outer function has returned.
+    As per the above code, the inner function(i.e, greetingInfo) has access to the variables in the outer function scope(i.e, Welcome) even after the outer function has returned.
 
     **[⬆ Back to Top](#table-of-contents)**
 
@@ -1739,14 +1764,29 @@ Good luck with your interview 😊
 
     **[⬆ Back to Top](#table-of-contents)**
 
-78. ### What are the javascript data types
+78. ### How do you detect caps lock key turned on or not
 
-    Below are the list of javascript data types available
-    1. Number
-    2. String
-    3. Boolean
-    4. Object
-    5. Undefined
+    The `mouseEvent getModifierState()` is used to return a boolean value that indicates whether the specified modifier key is activated or not. The modifiers such as CapsLock, ScrollLock and NumLock are activated when they are clicked, and deactivated when they are clicked again.
+    
+    Let's take an input element to detect the CapsLock on/off behavior with an example,
+    
+    ```html
+        <input type="password" onmousedown="enterInput(event)">
+          
+        <p id="feedback"></p>
+          
+        <script>
+        function enterInput(e) {
+          var flag = e.getModifierState("CapsLock");
+          if(flag) {
+              document.getElementById("feedback").innerHTML = "CapsLock activated";
+              
+          } else {
+              document.getElementById("feedback").innerHTML = "CapsLock not activated";
+          }
+        }
+        </script>
+    ```
 
     **[⬆ Back to Top](#table-of-contents)**
 
@@ -2231,7 +2271,7 @@ Good luck with your interview 😊
      1. **Using RegEx:** The advanced solution is using Regular expression's test method(`RegExp.test`), which allows for testing for against regular expressions
 
      ```javascript
-     var mainString = "hello", regex = "/hell/";
+     var mainString = "hello", regex = /hell/;
      regex.test(mainString)
      ```
 
@@ -3876,13 +3916,15 @@ Good luck with your interview 😊
 
 223. ### What are primitive data types
 
-     A primitive data type is data that has a primitive value (which has no properties or methods). There are 5 types of primitive data types.
+     A primitive data type is data that has a primitive value (which has no properties or methods). There are 7 types of primitive data types.
      
      1. string
      2. number
      3. boolean
      4. null
      5. undefined
+     6. bigint
+     7. symbol
 
      **[⬆ Back to Top](#table-of-contents)**
 
@@ -5114,7 +5156,10 @@ Good luck with your interview 😊
      ```
 
      The output of the above for loops is 4 4 4 4 and 0 1 2 3
-     **Explanation:** Due to the event queue/loop of javascript, the `setTimeout` callback function is called after the loop has been executed. Since the variable i is declared with the `var` keyword it became a global variable and the value was equal to 4 using iteration when the time setTimeout function is invoked. Hence, the output of the first loop is `4 4 4 4`. Whereas in the second loop, the variable i is declared as the `let` keyword it becomes a block scoped variable and it holds a new value(0, 1 ,2 3) for each iteration. Hence, the output of the first loop is `0 1 2 3`.
+     
+     **Explanation:** Due to the event queue/loop of javascript, the `setTimeout` callback function is called after the loop has been executed. Since the variable i is declared with the `var` keyword it became a global variable and the value was equal to 4 using iteration when the time `setTimeout` function is invoked. Hence, the output of the first loop is `4 4 4 4`. 
+     
+     Whereas in the second loop, the variable i is declared as the `let` keyword it becomes a block scoped variable and it holds a new value(0, 1 ,2 3) for each iteration. Hence, the output of the first loop is `0 1 2 3`.
 
      **[⬆ Back to Top](#table-of-contents)**
 
@@ -7225,6 +7270,8 @@ function Vehicle(model, color, year, country) {
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 2. What is the output of below code
 
 ```javascript
@@ -7261,6 +7308,8 @@ Since the block scoped variable x is undefined outside of the function, the type
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 3. What is the output of below code
 
@@ -7301,6 +7350,8 @@ The statements order is based on the event loop mechanism. The order of statemen
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 4. What is the output of below equality check
 
 ```javascript
@@ -7322,6 +7373,8 @@ You can find more details about the explanation here [0.30000000000000004.com/](
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 5. What is the output of below code
 
@@ -7364,6 +7417,8 @@ var y = 1;
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 6. What is the output of below code
 
 ```javascript
@@ -7404,6 +7459,8 @@ console.log(foo()); // {message: "Hello World"}
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 7. What is the output of below code
 
 ```javascript
@@ -7430,6 +7487,8 @@ If you try to print myChars then you can observe that it doesn't set an undefine
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 8. What is the output of below code in latest Chrome
 
@@ -7462,6 +7521,8 @@ The latest chrome versions display `sparse array`(they are filled with holes) us
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 9. What is the output of below code
 
 ```javascript
@@ -7491,6 +7552,8 @@ ES6 provides method definitions and property shorthands for objects. So both pro
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 10. What is the output of below code
 
@@ -7529,6 +7592,8 @@ Whereas the second statement follows the below order,
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 11. What is the output of below code in non-strict mode
 
 ```javascript
@@ -7557,6 +7622,8 @@ The value of the first parameter is mapped to the third argument which is passed
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 12. What is the output of below code
 
 ```javascript
@@ -7581,6 +7648,8 @@ Unlike regular functions, the arrow functions doesn't not allow duplicate parame
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 13. What is the output of below code
 
@@ -7622,6 +7691,8 @@ console.log(arrowFunc(1, 2, 3));
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 14. What is the output of below code
 
 ```javascript
@@ -7642,6 +7713,8 @@ In order to be consistent with functions like `String.prototype.padStart`, the s
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 15. What is the output of below code
 
@@ -7665,6 +7738,8 @@ console.log(Math.max());
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 16. What is the output of below code
 
@@ -7692,6 +7767,8 @@ So it doesn't matter about number brackets([]) around the number, it is always c
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 17. What is the output of below code
 
 ```javascript
@@ -7714,6 +7791,8 @@ The concatenation operator(+) is applicable for both number and string types. So
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 18. What is the output of below code
 
@@ -7763,13 +7842,15 @@ The + operator is not meant or defined for arrays. So it converts arrays into st
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 20. What is the output of below code
 
 ```javascript
 const numbers = new Set([1, 1, 2, 3, 4]);
 console.log(numbers);
 
-const browser = new Set('Firefox);
+const browser = new Set('Firefox');
 console.log(browser);
 ```
 
@@ -7788,6 +7869,8 @@ Since `Set` object is a collection of unique values, it won't allow duplicate va
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 21. What is the output of below code
 
@@ -7808,6 +7891,8 @@ JavaScript follows IEEE 754 spec standards. As per this spec, NaNs are never equ
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 22. What is the output of below code
 
@@ -7841,6 +7926,8 @@ console.log(numbers.includes(Number.isNaN)); // true
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 23. What is the output of below code
 
 ```javascript
@@ -7862,7 +7949,7 @@ When using rest parameters, trailing commas are not allowed and will throw a Syn
 If you remove the trailing comma then it displays 1st answer
 
 ```javascript
-let [a, ...b,] = [1, 2, 3, 4, 5];
+let [a, ...b] = [1, 2, 3, 4, 5];
 console.log(a, b); // 1, [2, 3, 4, 5]
 ```
 
@@ -7870,6 +7957,8 @@ console.log(a, b); // 1, [2, 3, 4, 5]
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 25. What is the output of below code
 
@@ -7880,10 +7969,10 @@ async function func() {
 console.log(func());
 ```
 
-- 1: Promise {<resolved>: 10}
+- 1: Promise {\<fulfilled\>: 10}
 - 2: 10
 - 3: SyntaxError
-- 4: Promise {<rejected>: 10}
+- 4: Promise {\<rejected\>: 10}
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -7902,6 +7991,8 @@ function func() {
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 26. What is the output of below code
 
 ```javascript
@@ -7911,10 +8002,10 @@ async function func() {
 console.log(func());
 ```
 
-- 1: Promise {<resolved>: 10}
+- 1: Promise {\<fulfilled\>: 10}
 - 2: 10
 - 3: SyntaxError
-- 4: Promise {<resolved>: undefined}
+- 4: Promise {\<resolved\>: undefined}
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -7932,6 +8023,8 @@ function func() {
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 27. What is the output of below code
 
@@ -7970,6 +8063,8 @@ Even though “processArray” is an async function, the anonymous function that
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 28. What is the output of below code
 
@@ -8020,6 +8115,8 @@ async function processArray(array) {
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 29. What is the output of below code
 
 ```javascript
@@ -8047,6 +8144,8 @@ Set has few exceptions from equality check,
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 30. What is the output of below code
 
@@ -8082,6 +8181,8 @@ Symbol follows below conventions,
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 31. What is the output of below code
 
 ```javascript
@@ -8105,6 +8206,8 @@ console.log(sym1);
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 32. What is the output of below code
 
@@ -8142,6 +8245,8 @@ The return value of `typeof myNumber (OR) typeof myString` is always the truthy 
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 33. What is the output of below code
 
 ```javascript
@@ -8169,6 +8274,8 @@ The symbols has below constraints,
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 34. What is the output of below code
 
@@ -8200,6 +8307,8 @@ Using constructors, `new.target` refers to the constructor (points to the class 
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 35. What is the output of below code
 
 ```javascript
@@ -8223,6 +8332,8 @@ It throws a syntax error because the rest element should not have a trailing com
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 36. What is the output of below code
 
@@ -8253,6 +8364,8 @@ The object property follows below rules,
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 37. What is the output of below code
 
@@ -8304,6 +8417,8 @@ area();
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 38. What is the output of below code
 
 ```javascript
@@ -8333,6 +8448,8 @@ It is possible to combine Array and Object destructuring. In this case, the thir
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 39. What is the output of below code
 
@@ -8370,6 +8487,8 @@ Hence, the result of function calls categorized as below,
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 40. What is the output of below code
 
 ```javascript
@@ -8398,6 +8517,8 @@ Since the default argument is evaluated at call time, a new object is created ea
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 41. What is the output of below code
 
 ```javascript
@@ -8425,6 +8546,8 @@ Since parameters defined earlier are available to later default parameters, this
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 42. What is the output of below code
 
 ```javascript
@@ -8448,6 +8571,8 @@ The functions and variables declared in the function body cannot be referred fro
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 43. What is the output of below code
 
@@ -8477,6 +8602,8 @@ The rest parameter is used to hold the remaining parameters of a function and it
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 44. What is the output of below code
 
 ```javascript
@@ -8501,6 +8628,8 @@ Spread syntax can be applied only to iterable objects. By default, Objects are n
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 45. What is the output of below code
 
@@ -8531,6 +8660,8 @@ Generators are not constructible type. But if you still proceed to do, there wil
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 46. What is the output of below code
 
@@ -8564,6 +8695,8 @@ A return statement in a generator function will make the generator finish. If a 
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 47. What is the output of below code
 
@@ -8600,6 +8733,8 @@ The generator should not be re-used once the iterator is closed. i.e, Upon exiti
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 48. What is the output of below code
 
 ```javascript
@@ -8620,6 +8755,8 @@ If you use an invalid number(outside of 0-7 range) in the octal literal, JavaScr
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 49. What is the output of below code
 
@@ -8659,6 +8796,8 @@ Unlike function declarations, class declarations are not hoisted. i.e, First You
 
 ---
 
+**[⬆ Back to Top](#table-of-contents)**
+
 #### 50. What is the output of below code
 
 ```javascript
@@ -8697,6 +8836,8 @@ When a regular or prototype method is called without a value for **this**, the m
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 51. What is the output of below code
 
@@ -8739,6 +8880,8 @@ The super keyword is used to call methods of a superclass. Unlike other language
 </details>
 
 ---
+
+**[⬆ Back to Top](#table-of-contents)**
 
 #### 52. What is the output of below code
 
@@ -8876,3 +9019,38 @@ It returns undefined for non-strict mode and returns Error for strict mode. In n
 
 **[⬆ Back to Top](#table-of-contents)**
 
+#### 56. What is the output of below code?
+
+```javascript
+let count = 10;
+
+(function innerFunc() {
+    if (count === 10) {
+        let count = 11;
+        console.log(count);
+    }
+    console.log(count);
+})();
+```
+
+- 1: 11, 10
+- 2: 11, 11
+- 3: 10, 11
+- 4: 10, 10
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+11 and 10 is logged to the console. 
+
+The innerFunc is a closure which captures the count variable from the outerscope. i.e, 10. But the conditional has another local variable `count` which overwrites the ourter `count` variable. So the first console.log displays value 11.
+Whereas the second console.log logs 10 by capturing the count variable from outerscope.
+ 
+</p>
+
+</details>
+
+---
+
+**[⬆ Back to Top](#table-of-contents)**
